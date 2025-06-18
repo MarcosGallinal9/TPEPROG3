@@ -49,7 +49,12 @@ public class CSVReader {
             } else if (line.length >= 2) {
                 String nombre = line[0].trim();
                 int cantPiezas = Integer.parseInt(line[1].trim());
-                maquinas.add(new Maquina(nombre, cantPiezas));
+
+                if (cantPiezas > 0) {
+                    maquinas.add(new Maquina(nombre, cantPiezas));
+                } else {
+                    System.out.println("Maquina " + nombre + " descartada porque produce " + cantPiezas + " piezas (valor invalido).");
+                }
             }
         }
 

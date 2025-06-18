@@ -69,9 +69,12 @@ public class Servicios {
                 int resto = piezasTotales - piezasProducidas;
                 if (m.getCantPiezas() <= resto) {
                     estadoActual.add(m);
-                    piezasProducidas += m.getCantPiezas();
-                    solucionBacktracking(piezasProducidas, estadoActual);
-                    piezasProducidas -= m.getCantPiezas();
+                    if(estadoActual.size() < solucionFinal.size() || solucionFinal.isEmpty()) {
+
+                        piezasProducidas += m.getCantPiezas();
+                        solucionBacktracking(piezasProducidas, estadoActual);
+                        piezasProducidas -= m.getCantPiezas();
+                    }
                     estadoActual.remove(estadoActual.size() - 1);
                 }
             }
